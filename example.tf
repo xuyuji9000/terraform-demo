@@ -15,6 +15,10 @@ resource "aws_eip" "ip" {
     instance = "${aws_instance.example.id}"
 }
 
+output "ip" {
+    value = "${aws_eip.ip.public_ip}"
+}
+
 resource "aws_s3_bucket" "example" {
     bucket = "terraform-getting-started-guide-yogiman"
     acl    = "private"
