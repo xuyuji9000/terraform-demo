@@ -5,7 +5,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "example" {
-    ami           = "ami-fba67596"
+    ami           = "${lookup(var.amis, var.region)}"
     instance_type = "t2.micro"
 
     depends_on    = ["aws_s3_bucket.example"]
