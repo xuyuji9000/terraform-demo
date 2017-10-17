@@ -5,16 +5,17 @@ provider "alicloud" {
 }
 
 resource "alicloud_instance" "web" {
-    availability_zone     = "${var.region}-a"
-    image_id              = "ubuntu_16_0402_64_20G_alibase_20170818.vhd"
-                             
-    internet_charge_type  = "PayByBandwidth"
+    availability_zone          = "${var.region}-a"
+    image_id                   = "ubuntu_16_0402_64_20G_alibase_20170818.vhd"
+                                  
+    internet_charge_type       = "PayByTraffic"
+    internet_max_bandwidth_out = "100"
     
-    instance_type         = "ecs.xn4.small"
-    system_disk_category  = "cloud_efficiency"
-    io_optimized          = "optimized"
-    security_groups       = ["${alicloud_security_group.default.id}"]
-    instance_name         = "web"
+    instance_type              = "ecs.xn4.small"
+    system_disk_category       = "cloud_efficiency"
+    io_optimized               = "optimized"
+    security_groups            = ["${alicloud_security_group.default.id}"]
+    instance_name              = "web"
 }
 
 resource "alicloud_security_group" "default" {
