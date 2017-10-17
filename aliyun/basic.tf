@@ -20,6 +20,13 @@ resource "alicloud_instance" "web" {
 
 resource "alicloud_security_group" "default" {
     name        = "default"
-    provider    = "alicloud"
     description = "default"
+}
+
+resource "alicloud_security_group_rule" "ping" {
+    type              = "ingress"
+    ip_protocol       = "tcp"
+    port_range        = "80/80"
+    security_group_id = "${alicloud_security_group.default.id}"
+    cidr_ip           = "0.0.0.0/0"
 }
