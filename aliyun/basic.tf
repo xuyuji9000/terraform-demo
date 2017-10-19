@@ -14,13 +14,16 @@ resource "alicloud_instance" "web" {
     instance_type              = "ecs.xn4.small"
     system_disk_category       = "cloud_efficiency"
     io_optimized               = "optimized"
-    security_groups            = ["${alicloud_security_group.default.id}"]
     instance_name              = "web"
+
+    security_groups            = ["${alicloud_security_group.default.id}"]
+    vswitch_id                 = "${alicloud_vswitch.terraform_switch.id}"
 }
 
 resource "alicloud_security_group" "default" {
     name        = "default"
     description = "default"
+    vpc_id      = "${alicloud_vpc.terraform_vpc.id}"
 }
 
 resource "alicloud_security_group_rule" "ping" {
