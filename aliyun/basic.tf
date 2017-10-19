@@ -5,7 +5,7 @@ provider "alicloud" {
 }
 
 resource "alicloud_instance" "web" {
-    availability_zone          = "${var.region}-a"
+    availability_zone          = "${var.availability_zone}"
     image_id                   = "ubuntu_16_0402_64_20G_alibase_20170818.vhd"
                                   
     internet_charge_type       = "PayByTraffic"
