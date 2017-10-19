@@ -30,3 +30,8 @@ resource "alicloud_security_group_rule" "ping" {
     security_group_id = "${alicloud_security_group.default.id}"
     cidr_ip           = "0.0.0.0/0"
 }
+
+resource "alicloud_vpc" "terraform_vpc" {
+    name       = "terraform_vpc"
+    cidr_block = "172.16.0.0/12"
+}
