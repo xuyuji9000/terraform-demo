@@ -35,3 +35,9 @@ resource "alicloud_vpc" "terraform_vpc" {
     name       = "terraform_vpc"
     cidr_block = "172.16.0.0/12"
 }
+
+resource "alicloud_vswitch" "terraform_switch" {
+    vpc_id            = "${alicloud_vpc.terraform_vpc.id}"
+    cidr_block        = "172.16.0.0/16"
+    availability_zone = "${var.availability_zone}"
+}
