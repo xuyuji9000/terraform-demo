@@ -17,5 +17,5 @@ variable "vswitch_cidr" {
 }
 
 variable "password" {
-    default = ""
+    description = "The password of instance. Need contain capital, lowercase and special character at the same time."
 }

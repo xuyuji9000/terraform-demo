@@ -14,11 +14,16 @@ resource "alicloud_instance" "web" {
     
     instance_type              = "ecs.xn4.small"
     system_disk_category       = "cloud_efficiency"
-    io_optimized               = "optimized"
     instance_name              = "web"
+    
+    password                   = "${var.password}"
 
     security_groups            = ["${alicloud_security_group.default.id}"]
     vswitch_id                 = "${alicloud_vswitch.terraform_switch.id}"
+}
+
+output "ip" {
+    value = "${alicloud_instance.web.public_ip}"
 }
 
 resource "alicloud_security_group" "default" {
@@ -31,6 +36,14 @@ resource "alicloud_security_group_rule" "ping" {
     type              = "ingress"
     ip_protocol       = "icmp"
     port_range        = "-1/-1"
+    security_group_id = "${alicloud_security_group.default.id}"
+    cidr_ip           = "0.0.0.0/0"
+}
+
+resource "alicloud_security_group_rule" "ssh" {
+    type              = "ingress"
+    ip_protocol       = "tcp"
+    port_range        = "22/22"
     security_group_id = "${alicloud_security_group.default.id}"
     cidr_ip           = "0.0.0.0/0"
 }
