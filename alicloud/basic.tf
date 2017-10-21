@@ -17,7 +17,8 @@ resource "alicloud_instance" "web" {
     internet_max_bandwidth_out = "100"
     allocate_public_ip         = true
     
-    instance_type              = "ecs.xn4.small"
+    instance_type              = "ecs.n1.tiny"
+    is_outdated                = true
     system_disk_category       = "cloud_efficiency"
     instance_name              = "web"
     

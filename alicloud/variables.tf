@@ -1,11 +1,11 @@
 variable "access_key" {}
 variable "secret_key" {}
 variable "region" {
-    default = "cn-shanghai"
+    default = "ap-southeast-1"
 }
 
 variable "availability_zone" {
-    default = "cn-shanghai-a"
+    default = "ap-southeast-1a"
 }
 
 variable "vpc_cidr" {
