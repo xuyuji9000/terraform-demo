@@ -25,5 +25,5 @@ variable "key_name" {
 }
 
 variable "key_file" {
-    default = "alicloud_ssh_key.pem"
+    default = "private.pem"
 }
