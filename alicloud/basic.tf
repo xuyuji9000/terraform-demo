@@ -22,7 +22,6 @@ resource "alicloud_instance" "web" {
     system_disk_category       = "cloud_efficiency"
     instance_name              = "web"
     
-    password                   = "${var.password}"
     key_name                   = "${alicloud_key_pair.key_pair.id}"
 
     security_groups            = ["${alicloud_security_group.default.id}"]
