@@ -19,3 +19,11 @@ variable "vswitch_cidr" {
 variable "password" {
     description = "The password of instance. Need contain capital, lowercase and special character at the same time."
 }
+
+variable "key_name" {
+    default = "key-pair-from-terraform"
+}
+
+variable "key_file" {
+    default = "alicloud_ssh_key.pem"
+}

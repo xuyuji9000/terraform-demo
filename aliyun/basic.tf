@@ -4,6 +4,11 @@ provider "alicloud" {
     region     = "${var.region}"
 }
 
+resource "alicloud_key_pair" "key_pair" {
+    key_name = "${var.key_name}"
+    key_file = "${var.key_file}"
+}
+
 resource "alicloud_instance" "web" {
     availability_zone          = "${var.availability_zone}"
     image_id                   = "ubuntu_16_0402_64_20G_alibase_20170818.vhd"
@@ -17,6 +22,7 @@ resource "alicloud_instance" "web" {
     instance_name              = "web"
     
     password                   = "${var.password}"
+    key_name                   = "${alicloud_key_pair.key_pair.id}"
 
     security_groups            = ["${alicloud_security_group.default.id}"]
     vswitch_id                 = "${alicloud_vswitch.terraform_switch.id}"
