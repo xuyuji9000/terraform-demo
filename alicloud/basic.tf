@@ -11,7 +11,7 @@ resource "alicloud_key_pair" "key_pair" {
 
 resource "alicloud_instance" "web" {
     availability_zone          = "${var.availability_zone}"
-    image_id                   = "m-t4nhzc7pd8k7pqo6lnye"
+    image_id                   = "m-t4nj36enzsqshlf2h267"
                                   
     internet_charge_type       = "PayByTraffic"
     internet_max_bandwidth_out = "100"
