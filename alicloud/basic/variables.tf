@@ -23,3 +23,7 @@ variable "key_name" {
 variable "key_file" {
     default = "private.pem"
 }
+
+variable "image_id" {
+    default = "m-t4nh8g1nh0vbqr2reuvl"
+}
