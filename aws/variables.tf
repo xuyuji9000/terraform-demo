@@ -3,6 +3,9 @@ variable "secret_key" {}
 variable "region" {
     default = "cn-north-1"
 }
+
+variable "key_pair" {}
+
 variable "amis" {
     type    = "map"
     default = {
