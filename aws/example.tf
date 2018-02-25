@@ -5,22 +5,27 @@ provider "aws" {
 }
 
 resource "aws_instance" "example" {
-    ami           = "${lookup(var.amis, var.region)}"
-    instance_type = "t2.micro"
+    ami             = "${lookup(var.amis, var.region)}"
+    instance_type   = "t2.micro"
 
-    depends_on    = ["aws_s3_bucket.example"]
+    tags {
+        Name = "terraform-instance-demo"
+    }
+
+    depends_on      = ["aws_s3_bucket.example"]
 }
 
-resource "aws_eip" "ip" {
-    instance = "${aws_instance.example.id}"
-}
+#resource "aws_eip" "ip" {
+#    instance = "${aws_instance.example.id}"
+#}
 
-output "ip" {
-    value = "${aws_eip.ip.public_ip}"
-}
+#output "ip" {
+#    value = "${aws_eip.ip.public_ip}"
+#}
+
+
 
 resource "aws_s3_bucket" "example" {
     bucket = "terraform-getting-started-guide-yogiman"
     acl    = "private"
 }
-
