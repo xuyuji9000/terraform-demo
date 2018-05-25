@@ -15,7 +15,6 @@ resource "alicloud_instance" "web" {
                                   
     internet_charge_type       = "PayByTraffic"
     internet_max_bandwidth_out = "100"
-    allocate_public_ip         = true
     
     instance_type              = "ecs.n1.tiny"
     is_outdated                = true
